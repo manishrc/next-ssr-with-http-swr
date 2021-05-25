@@ -5,7 +5,7 @@ function time() {
 }
 
 export default function Home({ serverTime }) {
-  const [clientTime, setClientTime] = useState("loading...");
+  const [clientTime, setClientTime] = useState("");
   useEffect(() => {
     setClientTime(time());
   }, []);
