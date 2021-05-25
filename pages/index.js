@@ -13,10 +13,7 @@ export default function Home({ serverTime }) {
 }
 
 export async function getServerSideProps({ req, res }) {
-  res.setHeader(
-    "Cache-Control",
-    "public, max-age=1, stale-while-revalidate=10"
-  );
+  res.setHeader("Cache-Control", "max-age=1, stale-while-revalidate=10");
   const serverTime = time();
   return {
     props: { serverTime },
