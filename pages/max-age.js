@@ -14,17 +14,21 @@ export default function Home({ serverTime }) {
     <div>
       <code>
         <pre style={{ padding: "18px", background: "#ccc" }}>
-          Cache-Control: s-maxage=60,stale-while-revalidate
+          Cache-Control: public,max-age=60,stale-while-revalidate
         </pre>
       </code>
-      <div>Server Time: {serverTime}</div>
-      <div>Client Time: {clientTime}</div>
+      <div>
+        Server Time: <pre>{serverTime}</pre>
+      </div>
+      <div>
+        Client Time: <pre>{clientTime}</pre>
+      </div>
     </div>
   );
 }
 
 export async function getServerSideProps({ req, res }) {
-  res.setHeader("Cache-Control", "s-maxage=60, stale-while-revalidate");
+  res.setHeader("Cache-Control", "public,max-age=60,stale-while-revalidate");
   const serverTime = time();
 
   return new Promise((resolve, reject) =>
